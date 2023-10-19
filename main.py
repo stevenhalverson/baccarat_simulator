@@ -1,5 +1,5 @@
 import random
-import shoe
+from classes import shoe
 
 def make_cards():
     deck_instance = shoe.BaccaratDeck()
