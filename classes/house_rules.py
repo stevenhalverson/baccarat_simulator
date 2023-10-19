@@ -23,5 +23,7 @@ class HouseRules():
         else:
             self.tie = 0
 
-    def dragon_condition(self, player_total, banker_total):
-        if player_total 
+    def dragon_condition(self, player_total, banker_total, player_draw):
+            if player_draw = True
+            if banker_draw_third = True
+            if banker_total < player_total
