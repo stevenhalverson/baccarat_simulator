@@ -1,0 +1,18 @@
+import random
+import shoe
+
+class BaccaratCards: #maybe make this main.py and rename.
+    def __init__(self):
+        self.deck_instance = shoe.BaccaratDeck()
+        self.cards = self.deck_instance.get_deck()
+        self.removed_cards = []
+        self.static_deck = []
+
+    def make_cards(self): #is initiated in shuffled_deck(), not in play()
+        return self.cards.copy()  # Return a static copy of the ordered shoe
+
+    def shuffle_deck(self):
+        ready_deck = self.make_cards()
+        random.shuffle(ready_deck)
+        self.static_deck = ready_deck.copy()
+        return self.static_deck

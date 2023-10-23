@@ -2,12 +2,13 @@ import random
 import shoe
 import house_rules
 
-class BaccaratGame: #maybe make this main.py and rename.
+class BaccaratSim: #maybe make this main.py and rename.
     def __init__(self):
         self.deck_instance = shoe.BaccaratDeck()
         self.deck = self.deck_instance.get_deck()
         self.removed_cards = []
         self.rule = house_rules.HouseRules()
+        self.rounds = 0
 
     def make_cards(self): #is initiated in shuffled_deck(), not in play()
         return self.deck.copy()  # Return a static copy of the ordered shoe
@@ -21,7 +22,7 @@ class BaccaratGame: #maybe make this main.py and rename.
             total = sum(cards)
             return total % 10
 
-    def player_needs_third_card(self):
+    def player_needs_third_card(self, b, p):
         if self.banker_total in [8, 9]:
             return False 
         if self.player_total in [6, 7, 8, 9]: 
@@ -72,19 +73,3 @@ class BaccaratGame: #maybe make this main.py and rename.
         return self.player_win, self.banker_win, self.tie_win
         
 
-    def play(self):
-        self.shuffle_deck()
-        self.deal_cards()
-        self.determine_winning_bets()
-        
-        if self.player_win:
-            print("player win") #there might be too many player wins statistically. something in the code could be making player win more than banker. 
-        elif self.banker_win:
-            print("banker win")
-        elif self.tie_win:
-            print("tie!")
-            
-
-if __name__ == "__main__": #example of main
-    game = BaccaratGame()
-    game.play()
