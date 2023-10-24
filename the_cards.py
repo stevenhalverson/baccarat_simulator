@@ -1,7 +1,7 @@
 import random
 import shoe
 
-class BaccaratCards: #maybe make this main.py and rename.
+class BaccaratCards: 
     def __init__(self):
         self.deck_instance = shoe.BaccaratDeck()
         self.cards = self.deck_instance.get_deck()
