@@ -12,7 +12,7 @@ class BaccaratCards:
         return self.cards.copy()  # Return a static copy of the ordered shoe
 
     def shuffle_deck(self):
-        ready_deck = self.make_cards()
+        ready_deck = self.make_cards() #this could be where the flaw of creating too many cards is at
         random.shuffle(ready_deck)
         self.static_deck = ready_deck.copy()
         return self.static_deck
