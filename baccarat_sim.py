@@ -15,8 +15,8 @@ def main(rounds):
       c.get_shoe(total_decks=8)
 
       d = DealCards(cards=c.deck)
-      deal = d.deal_cards() #erase print(), used only for test, replace w/ return. class produces "self.results"
-      print(deal)
+      d.deal_cards() #erase print(), used only for test, replace w/ return. class produces "self.results"
+      print(d.player_total)
       
 
       #r = Results()
