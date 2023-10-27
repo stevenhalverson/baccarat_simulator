@@ -14,6 +14,7 @@ class DealCards:
         self.player_card_3 = None
         self.banker_card_3 = None
         self.banker_total = None
+        self.player_total = None
         self.player_third_card_draw = None
         self.banker_third_card_draw = None
         self.banker_win = None
@@ -48,16 +49,41 @@ class DealCards:
         self.banker_card_1 = self.shoe.pop()
         self.player_card_2 = self.shoe.pop()
         self.banker_card_2 = self.shoe.pop()
-        self.play_total = (self.player_card_1 + self.player_card_2) % 10
+        self.player_total = (self.player_card_1 + self.player_card_2) % 10
+        self.banker_total = (self.banker_card_1 + self.banker_card_2) % 10
+
+        print("player first total = "+str(self.player_total))
+
+        if self.player_total in [0, 1, 2, 3, 4, 5]:
+            self.player_card_3 = self.shoe.pop(0)
+            self.player_total = (self.player_card_1 + self.player_card_2 + self.player_card_3) % 10
+            print(f"player drew third card ="+str(self.player_card_3))
+            return self.player_total
+        
+        if self.banker_total in [0, 1, 2, 3, 4, 5] and self.player_total not in [8, 9]:
+            if self.banker_total in [0, 1, 2]:
+                self.banker_card_3 = self.shoe.pop(0)
+                self.banker_total = (self.banker_card_1 + self.banker_card_2 + self.banker_card_3) % 10
+                print(f"banker drew third card")
+
+            elif self.banker_total in [3] and self.player_card_3 in [8]:
+                self.banker_total = (self.banker_card_1 + self.banker_card_2 + self.banker_card_3) % 10
+
+            elif self.banker_total in [4] and self.player_card_3 in [2, 3, 4, 5, 6, 7]:
+                self.banker_total = (self.banker_card_1 + self.banker_card_2 + self.banker_card_3) % 10
+
+            elif self.banker_total in [5] and self.player_card_3 in [4, 5, 6, 7]:
+                self.banker_total = (self.banker_card_1 + self.banker_card_2 + self.banker_card_3) % 10
+
+            elif self.banker_total in [6] and self.player_card_3 in [6, 7]:
+                self.banker_total = (self.banker_card_1 + self.banker_card_2 + self.banker_card_3 % 10)
 
     def deal_cards(self):
 
         self.shuffled_shoe()
-        print(self.shoe)
 
         self.cut_shoe()
-        print(self.shoe)
 
         self.baccarat_hand()
-        print(self.play_total)
+        return self.player_total
 
