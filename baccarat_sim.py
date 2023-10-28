@@ -16,7 +16,8 @@ def main(rounds):
 
       d = DealCards(cards=c.deck)
       d.deal_cards() #erase print(), used only for test, replace w/ return. class produces "self.results"
-      print(d.player_total)
+      print(d.banker_total, d.player_total)
+
       
 
       #r = Results()
