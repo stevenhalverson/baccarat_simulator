@@ -1,3 +1,5 @@
+import random
+
 class BaccaratDeck:
 
     RANKS = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 
@@ -13,3 +15,4 @@ class BaccaratDeck:
 
     def get_shoe(self, total_decks):
         self.deck = self.RANKS*total_decks
+        random.shuffle(self.deck)
