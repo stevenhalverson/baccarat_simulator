@@ -1,7 +1,8 @@
 
 from get_cards import BaccaratDeck
 from the_deal import DealCards
-import randomclass BaccaratSimulation:
+import random
+class BaccaratSimulation:
   
     """Simulates multiple decks for Baccarat."""
     def __init__(self):
