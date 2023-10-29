@@ -1,8 +1,8 @@
+
 from get_cards import BaccaratDeck
 from the_deal import DealCards
-import random
-
-class BaccaratSimulation:
+import randomclass BaccaratSimulation:
+  
     """Simulates multiple decks for Baccarat."""
     def __init__(self):
         #self.panda_bonus = panda_bonus or put as arg in __init__

@@ -4,4 +4,3 @@ import shoe
 import baccarat_sim_draft
 
 
-

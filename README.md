@@ -1,5 +1,5 @@
 # Baccarat Simulation
-A baccarat simulation that allows for different betting strategies to be tested. 
+A work in progress, baccarat simulation that allows for different betting strategies to be tested. 
 
 For example, if someone wants to bet the tie bet that pays 8 to 1 whenever the ratio of 10-value cards exceeds 25% with two decks left in an eight deck shoe.
 
