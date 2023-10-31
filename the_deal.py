@@ -38,7 +38,7 @@ class DealCards:
         self.shoe = self.shoe[self.cut_front:len(self.shoe)]
 
     def prepare_shoe(self):
-        print(f"shoe before prep: {self.shoe}")
+        #print(f"shoe before prep: {self.shoe}")
         if not self.is_shoe_prepared:
             self.cut_shoe()
 
@@ -47,6 +47,7 @@ class DealCards:
     def deal_cards(self):
         self.prepare_shoe()
         results = []
+        rounds = 0
     
         while len(self.shoe) > 14:
             self.player_card_1 = self.shoe.pop(0) #creates the cards. updates the shoe. 
@@ -57,6 +58,11 @@ class DealCards:
             self.player_total = (self.player_card_1 + self.player_card_2) % 10 #first draws of baccarat. next we determine if a third card is drawn for either of the sides
             self.banker_total = (self.banker_card_1 + self.banker_card_2) % 10
 
+            if self.player_total in [6, 7, 8, 9]:
+                 self.player_card_3 = None
+
+            if self.banker_total in (7, 8, 9):
+                 self.banker_card_3 = None
 
             if self.player_total in [0, 1, 2, 3, 4, 5] and self.banker_total not in [8, 9]:
                 self.player_card_3 = self.shoe.pop(0)
@@ -68,25 +74,29 @@ class DealCards:
                     self.banker_card_3 = self.shoe.pop(0)
                     self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
-                elif self.banker_total in [3] and self.player_card_3 not in [8]:
+            if self.banker_total in [3] and self.player_card_3 not in [8]:
                     self.banker_card_3 = self.shoe.pop(0)
                     self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
-                elif self.banker_total in [4] and self.player_card_3 in [2, 3, 4, 5, 6, 7]:
+            if self.banker_total in [4] and self.player_card_3 in [2, 3, 4, 5, 6, 7]:
                     self.banker_card_3 = self.shoe.pop(0)
                     self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
-                elif self.banker_total in [5] and self.player_card_3 in [4, 5, 6, 7]:
+            if self.banker_total in [5] and self.player_card_3 in [4, 5, 6, 7]:
                     self.banker_card_3 = self.shoe.pop(0)
                     self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
-                elif self.banker_total in [6] and self.player_card_3 in [6, 7]:
+            if self.banker_total in [6] and self.player_card_3 in [6, 7]:
                     self.banker_card_3 = self.shoe.pop(0)
                     self.banker_total = (self.banker_total + self.banker_card_3 % 10)
+                
+            rounds += 1
 
-            result = (self.banker_total, self.player_total)
+            result = ("banker total", self.banker_total, "player total", self.player_total, "cards", "player card 1", self.player_card_1, "player card 2", self.player_card_2, "player card 3", self.player_card_3,
+                      "banker card 1", self.banker_card_1, "banker card 2", self.banker_card_2, "banker card 3", self.banker_card_3, "outcome", "round = ", rounds)
+
             results.append(result)
-            print(len(results))
+        #print(len(results))
         
         self.is_shoe_prepared = False
         return(results)
