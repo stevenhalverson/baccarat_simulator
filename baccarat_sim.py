@@ -5,33 +5,30 @@ import random
 class BaccaratSimulation:
     """Simulates multiple decks for Baccarat."""
     def __init__(self):
-        #self.panda_bonus = panda_bonus or put as arg in __init__
+      
       self.results = []
         
 
     def begin_simulation(self, shoes):
           
-        for _ in range(shoes):
-          c = BaccaratDeck()
-          c.get_shoe(total_decks=8)
-          d = DealCards(c.deck)
-          result = d.deal_cards()
-          self.results.append(result)
+      for _ in range(shoes):
+        c = BaccaratDeck()
+        c.get_shoe(total_decks=8)
+        d = DealCards(c.deck)
+        result = d.deal_cards()
+        self.results.append(result)
 
-          print(self.results)
-          print(len(self.results))
-         
+        #print(self.results) this created factorial like growth when printing. it should be OUTSIDE of teh loop
+        #print(len(self.results))
 
-        #r = Results()
-        #r.calculate_results(self)
-        #print(results_data) for return later to "results" above.  
+      print(len(self.results))
+      print(self.results)
+
 
 def main():
   sim = BaccaratSimulation()
   sim.begin_simulation(shoes=2)
 
-
-       
 
 if __name__=="__main__":
   main()
