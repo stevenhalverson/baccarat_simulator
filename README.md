@@ -1,10 +1,8 @@
 # Baccarat Simulation
-A work in progress, baccarat simulation that allows for different betting strategies to be tested. 
+A work in progress.
 
-For example, if someone wants to bet the tie bet that pays 8 to 1 whenever the ratio of 10-value cards exceeds 25% with two decks left in an eight deck shoe.
+Currently the program can simulate any amount of shoes of baccarat that a system can handle. The simulation includes tracking of the banker/player totals, if they drew a third card or not, the winning side, ties, win streaks, round in the shoe, and cards used out of the shoe (for testing card counting systems). 
 
-This simulation would allow someone to test various strategies with various bets to see if they can gain an advantage against a %5 commission charged when Banker wins, which is what is commonly found in casinos. 
+The next step is being able to export as a .db file using SQLite, or using Pandas and DataFrames. The option to do either may be added instead of just one. It is not determined yet. 
 
-Future plans to use machine learning to develop a possible winning strategy, or to determine if there is no winning strategy possible. 
-
-Hypothesis is that no winning strategy is possible or reasonable. 
+Bets still need to be added. It is not clear what the best step to take is: should it be implemented in the baccarat engine itself, or should it be implemented in the interface used to analyze the results. Since "banker/player/tie" is already defined there can be a separate class/file/language altogether analyzing the results from the database/DataFrame instead of the variable within the class. 
