@@ -29,8 +29,11 @@ class DealCards:
         self.last_win = None
         self.streak = None
         self.winners = Winners()
+
+        self.columns = ["b total", "p total", "p card 1", "p card 2", "p card 3",
+                   "b card 1", "b card 2", "b card 3", "winner", "round", "streak"]
         
-        self.df = None
+
         
 
     def cut_shoe(self):
@@ -66,7 +69,7 @@ class DealCards:
             self.banker_card_1 = self.shoe.pop(0) 
             self.player_card_2 = self.shoe.pop(0)
             self.banker_card_2 = self.shoe.pop(0)
-
+            result = {}
 
             self.player_total = (self.player_card_1 + self.player_card_2) % 10 #first draws of baccarat. next we determine if a third card is drawn for either of the sides
             self.banker_total = (self.banker_card_1 + self.banker_card_2) % 10
@@ -119,21 +122,22 @@ class DealCards:
 
             rounds += 1
 
-            result = [self.banker_total,                      
-                      self.player_total, 
-                      self.player_card_1, 
-                      self.player_card_2, 
-                      self.player_card_3, 
-                      self.banker_card_1, 
-                      self.banker_card_2, 
-                      self.banker_card_3,
-                      outcome,
-                      rounds,
-                      self.streak]
-            
-            result_df = pd.DataFrame([result], columns=["b total", "player total", "pcard1", "pcard2", "pcard3", "bcard1", "bcard2", "bcard3", "outcome", "rounds", "streak"])
+            result = [self.banker_total, 
 
-            self.df = pd.concat([self.df, result_df], ignore_index=True)  #MAKE A LIST NOT A DICTIONARY, THAT IS THE PROBLEM. LABEL THE COLUMNS INSTEAD OF MAKING IT IN THE LIST
+                      ]
+                      #self.player_total, 
+                      #self.player_card_1, 
+                      #self.player_card_2, 
+                      #self.player_card_3, 
+                      #self.banker_card_1, 
+                      #self.banker_card_2, 
+                      #self.banker_card_3,
+                      #outcome,
+                      #rounds,
+                      #self.streak
+            result_df = pd.DataFrame([result], columns=["b total"])
+
+            df = pd.concat([df, result_df], ignore_index=True)  #MAKE A LIST NOT A DICTIONARY, THAT IS THE PROBLEM. LABEL THE COLUMNS INSTEAD OF MAKING IT IN THE LIST
             
             #("banker total", self.banker_total, "player total", self.player_total, "cards", "player card 1", self.player_card_1, "player card 2", self.player_card_2, "player card 3", self.player_card_3,
                      # "banker card 1", self.banker_card_1, "banker card 2", self.banker_card_2, "banker card 3", self.banker_card_3, "outcome", outcome, "round = ", rounds, self.streak) 
@@ -145,6 +149,5 @@ class DealCards:
         
         self.is_shoe_prepared = False
         #results.append(str("SHUUUUUUUFFFFLLLLLLEEEEEDDDDD"))
-        #return 
-        return self.df
+        return df
 
