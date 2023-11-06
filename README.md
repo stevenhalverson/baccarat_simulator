@@ -8,7 +8,7 @@ Data points being tracked are: banker total, player total, all cards drawn and t
 
 The cut in the front of the shoe depends on the rank drawn of the first card. The cut in the back of the shoe is set at 14, but that value can easily be changed in the code.
 
-Missing is user input and GUI, the ability to generate a .db file instead of a .csv, and the second main module for analyzing the data to find meaningful conclusions. 
+Missing is another main module for analyzing the data to find meaningful conclusions and a strategy module, user input and GUI, and the ability to generate a .db file instead of a .csv.  
 
 
 
