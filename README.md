@@ -1,8 +1,15 @@
-# Baccarat Simulation
-A work in progress.
+# Baccarat Simulator
 
-Currently the program can simulate any amount of shoes of baccarat that a system can handle. The simulation includes tracking of the banker/player totals, if they drew a third card or not, the winning side, ties, win streaks, round in the shoe, and cards used out of the shoe (for testing card counting systems). 
+Eight-deck shoes can be simulated of rounds of baccarat. Thousands or more shoes can be simulated and exported to a .csv file.
 
-The next step is being able to export as a .db file using SQLite, or using Pandas and DataFrames. The option to do either may be added instead of just one. It is not determined yet. 
+A "shoe" is a casino term for the plastic device used to deal the cards, that roughly resembles the shape of a shoe. 
 
-Bets still need to be added. It is not clear what the best step to take is: should it be implemented in the baccarat engine itself, or should it be implemented in the interface used to analyze the results. Since "banker/player/tie" is already defined there can be a separate class/file/language altogether analyzing the results from the database/DataFrame instead of the variable within the class. 
+Data points being tracked are: banker total, player total, all cards drawn and their rank, the outcome, rounds in shoe, and winning streaks. 
+
+The cut in the front of the shoe depends on the rank drawn of the first card. The cut in the back of the shoe is set at 14, but that value can easily be changed in the code.
+
+Missing is user input and GUI, the ability to generate a .db file instead of a .csv, and the second main module for analyzing the data to find meaningful conclusions. 
+
+
+
+
