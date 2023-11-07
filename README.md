@@ -10,6 +10,8 @@ The cut in the front of the shoe depends on the rank drawn of the first card. Th
 
 Missing is another main module for analyzing the data to find meaningful conclusions and a strategy module, user input and GUI, and the ability to generate a .db file instead of a .csv.  
 
-
-
+### Setup
+some instructions to build locally, 
+added requirements file to set up virtual environment
+add logging, convert prints to logging.
 
