@@ -1,6 +1,6 @@
 # Baccarat Simulator
 
-Eight-deck shoes can be simulated of rounds of baccarat. Thousands or more shoes can be simulated and exported to a .csv file.
+Eight-deck shoes can be simulated of rounds of baccarat. Thousands or more shoes can be simulated and exported to a .csv file and .db file.
 
 A "shoe" is a casino term for the plastic device used to deal the cards, that roughly resembles the shape of a shoe. 
 
