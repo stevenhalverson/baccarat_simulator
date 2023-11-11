@@ -68,38 +68,39 @@ class DealCards:
 
             self.player_total = (self.player_card_1 + self.player_card_2) % 10 #first draws of baccarat. next we determine if a third card is drawn for either of the sides
             self.banker_total = (self.banker_card_1 + self.banker_card_2) % 10
-
-            if self.player_total in [6, 7, 8, 9]:
-                 self.player_card_3 = None
-
-            if self.banker_total in (7, 8, 9):
-                 self.banker_card_3 = None
-
-            if self.player_total in [0, 1, 2, 3, 4, 5] and self.banker_total not in [8, 9]:
-                self.player_card_3 = self.shoe.pop(0)
-                self.player_total = (self.player_total + self.player_card_3) % 10
-                self.p3cards= True
             
-            if self.banker_total in [0, 1, 2, 3, 4, 5, 6] and self.player_total not in [8, 9]:
-                if self.banker_total in [0, 1, 2]:
-                    self.banker_card_3 = self.shoe.pop(0)
-                    self.banker_total = (self.banker_total + self.banker_card_3) % 10
+            if not self.player_total in [8, 9] or self.banker_total in [8, 9]:
+                if self.player_total in [6, 7, 8, 9]:
+                        self.player_card_3 = None
 
-                if self.banker_total in [3] and self.player_card_3 not in [8]:
+                if self.banker_total in [7, 8, 9]:
+                        self.banker_card_3 = None
+
+                if self.player_total in [0, 1, 2, 3, 4, 5] and self.banker_total not in [8, 9]:
+                    self.player_card_3 = self.shoe.pop(0)
+                    self.player_total = (self.player_total + self.player_card_3) % 10
+                    self.p3cards= True
+                
+                if self.banker_total in [0, 1, 2, 3, 4, 5, 6]:
+                    if self.banker_total in [0, 1, 2]:
                         self.banker_card_3 = self.shoe.pop(0)
                         self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
-                if self.banker_total in [4] and self.player_card_3 in [2, 3, 4, 5, 6, 7]:
-                        self.banker_card_3 = self.shoe.pop(0)
-                        self.banker_total = (self.banker_total + self.banker_card_3) % 10
+                    if self.banker_total in [3] and self.player_card_3 not in [8]:
+                            self.banker_card_3 = self.shoe.pop(0)
+                            self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
-                if self.banker_total in [5] and self.player_card_3 in [4, 5, 6, 7]:
-                        self.banker_card_3 = self.shoe.pop(0)
-                        self.banker_total = (self.banker_total + self.banker_card_3) % 10
+                    if self.banker_total in [4] and self.player_card_3 in [2, 3, 4, 5, 6, 7]:
+                            self.banker_card_3 = self.shoe.pop(0)
+                            self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
-                if self.banker_total in [6] and self.player_card_3 in [6, 7]:
-                        self.banker_card_3 = self.shoe.pop(0)
-                        self.banker_total = (self.banker_total + self.banker_card_3) % 10
+                    if self.banker_total in [5] and self.player_card_3 in [4, 5, 6, 7]:
+                            self.banker_card_3 = self.shoe.pop(0)
+                            self.banker_total = (self.banker_total + self.banker_card_3) % 10
+
+                    if self.banker_total in [6] and self.player_card_3 in [6, 7]:
+                            self.banker_card_3 = self.shoe.pop(0)
+                            self.banker_total = (self.banker_total + self.banker_card_3) % 10
 
 
             if self.banker_total > self.player_total:
@@ -146,4 +147,6 @@ class DealCards:
         self.is_shoe_prepared = False
 
         return self.df
+
+
 
