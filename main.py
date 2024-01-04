@@ -3,6 +3,7 @@ from tkinter import messagebox
 from simulation import BaccaratSimulation
 import pandas as pd
 from data_access import *
+import threading
 
 class BaccaratGUI:
     def __init__(self, root):
@@ -28,12 +29,19 @@ class BaccaratGUI:
         try:
             num_shoes = int(self.shoes_entry.get())
             sim = BaccaratSimulation()
+
+            simulation_thread = threading.Thread(target=self.run_simulation, args=(sim, num_shoes))
+            simulation_thread.start()
+            
+        except ValueError:
+            messagebox.showerror("Error", "Invalid number of shoes. Please enter a valid number.")
+    
+    def run_simulation(self, sim, num_shoes):
             sim.begin_simulation(shoes=num_shoes)
             sim.get_csv()
             sim.save_to_sqlite_db()
             messagebox.showinfo("Success", "Simulation completed and data saved.")
-        except ValueError:
-            messagebox.showerror("Error", "Invalid number of shoes. Please enter a valid number.")
+
 
 if __name__ == "__main__":
     root = tk.Tk()
