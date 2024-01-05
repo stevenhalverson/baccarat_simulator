@@ -8,4 +8,4 @@ Some useful data points are a game's outcome and what cards have been used in th
 Download all files into a folder and run main.py. This will bring up a GUI to set how many shoes of baccarat are to be simulated, where to save the .db file, and where to save the .csv file.
 
 ### Prerequisites
-Use pip install -r requirements.txt to install any missing requirements.
+The requirements.txt file contains the requirements. 
