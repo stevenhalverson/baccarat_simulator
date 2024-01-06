@@ -9,3 +9,7 @@ Download all files into a folder and run main.py. This will bring up a GUI to se
 
 ### Prerequisites
 The requirements.txt file contains the requirements. 
+
+### Preview
+
+![Screenshot 2024-01-06 040440](https://github.com/stevenhalverson/baccarat_simulator/assets/26512171/a80fc022-87be-4107-a270-d3601b845fdd)
