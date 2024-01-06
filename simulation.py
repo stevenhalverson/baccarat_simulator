@@ -5,21 +5,28 @@ from data_access import *
 from tkinter import filedialog
 
 
+
 class BaccaratSimulation:
     """Simulates multiple decks for Baccarat."""
-    def __init__(self):
+    def __init__(self, progress_queue=None):
         self.results = []
         self.data_frames = None
         self.shoe_count = 0
         self.db = database()
+        self.progress_queue = progress_queue
 
     def begin_simulation(self, shoes):
         print(f'running simulation for {shoes} shoes')
-        for _ in range(shoes):
+        for i in range(shoes):
             c = BaccaratDeck()
             c.get_shoe(total_decks=8)
             d = DealCards(c.deck)
+
             self.shoe_count += 1
+            progress = (i + 1) / shoes * 100
+            if self.progress_queue:
+                 self.progress_queue.put(progress)
+
             df_shoe = d.deal_cards()
             df_shoe['shoe number'] = self.shoe_count
             self.results.append(df_shoe) 
