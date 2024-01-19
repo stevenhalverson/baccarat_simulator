@@ -32,18 +32,20 @@ class BaccaratGUI:
         self.progress = ttk.Progressbar(root, orient="horizontal", length=300, mode="determinate")
         self.progress.pack(pady=20)
 
+        self.simulation_complete = threading.Event()
+
     def start_simulation(self):
         try:
             num_shoes = int(self.shoes_entry.get())
-            sim = BaccaratSimulation(progress_queue=self.progress_queue)
+            sim = BaccaratSimulation(progress_queue=self.progress_queue, completion_flag=self.simulation_complete)
 
             simulation_thread = threading.Thread(target=self.run_simulation, args=(sim, num_shoes))
             simulation_thread.start()
-
-            self.check_progress() #should this go here?
             
         except ValueError:
             messagebox.showerror("Error", "Invalid number of shoes. Please enter a valid number.")
+
+        self.check_progress() #should this go here?
 
     def check_progress(self):
         try:
@@ -52,7 +54,12 @@ class BaccaratGUI:
 
         except queue.Empty:
             pass
-        self.root.after(100, self.check_progress)
+        
+        if self.simulation_complete.is_set():
+            self.progress["value"] = 100
+            pass
+        else:
+            self.root.after(100, self.check_progress)
     
     def run_simulation(self, sim, num_shoes):
             sim.begin_simulation(shoes=num_shoes)
