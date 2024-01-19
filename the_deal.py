@@ -104,13 +104,14 @@ class DealCards:
 
 
             if self.banker_total > self.player_total:
-                 outcome = "banker win"
+                outcome = "banker win"
 
-            if self.banker_total < self.player_total:
-                 outcome = "player win"
+            elif self.banker_total < self.player_total:
+                outcome = "player win"
 
-            if self.banker_total == self.player_total:
-                 outcome = "tie"
+            else:
+                self.banker_total == self.player_total
+                outcome = "tie"
 
             
             self.winners.update_streak(winner=outcome)
