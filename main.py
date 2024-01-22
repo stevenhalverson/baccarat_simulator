@@ -8,6 +8,9 @@ import threading
 import queue
 
 class BaccaratGUI:
+    MIN_SHOES = 1
+    MAX_SHOES = 15000
+    
     def __init__(self, root):
         self.root = root
         root.title("Baccarat Simulation")
@@ -37,13 +40,16 @@ class BaccaratGUI:
     def start_simulation(self):
         try:
             num_shoes = int(self.shoes_entry.get())
-            sim = BaccaratSimulation(progress_queue=self.progress_queue, completion_flag=self.simulation_complete)
 
+            if not self.MIN_SHOES <= num_shoes <= self.MAX_SHOES:
+                raise ValueError(f"Please enter a number between {self.MIN_SHOES} and {self.MAX_SHOES}.")
+            
+            sim = BaccaratSimulation(progress_queue=self.progress_queue, completion_flag=self.simulation_complete)
             simulation_thread = threading.Thread(target=self.run_simulation, args=(sim, num_shoes))
             simulation_thread.start()
             
-        except ValueError:
-            messagebox.showerror("Error", "Invalid number of shoes. Please enter a valid number.")
+        except ValueError as e:
+            messagebox.showerror("Error", str(e))
 
         self.check_progress() #should this go here?
 
