@@ -8,7 +8,7 @@ Some useful data points are a game's outcome and what cards have been used in th
 Download all files into a folder and run main.py. This will bring up a GUI to set how many shoes of baccarat are to be simulated, where to save the .db file, and where to save the .csv file.
 
 ### Prerequisites
-The requirements.txt file contains the required dependencies to run using Python. Python version 3.12 was used for testing, but it should also work on Python 3.11. 
+The requirements.txt file contains the required dependencies to run using Python.  
 
 ### Preview
 
