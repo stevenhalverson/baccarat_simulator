@@ -14,3 +14,8 @@ The requirements.txt file contains the required dependencies to run using Python
 
 ![Screenshot 2024-01-06 040440](https://github.com/stevenhalverson/baccarat_simulator/assets/26512171/a80fc022-87be-4107-a270-d3601b845fdd)
 
+*Known Issues*
+
+1. Progress bar is not in sync with simulation.
+2. File dialogue asks for .csv filename at end, not beginning.
+
