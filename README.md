@@ -19,3 +19,4 @@ The requirements.txt file contains the required dependencies to run using Python
 1. Progress bar is not in sync with simulation.
 2. File dialogue asks for .csv filename at end, not beginning.
 
+*Made with assistance from ChatGPT.
